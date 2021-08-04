@@ -1,9 +1,9 @@
 # Render Markdown AST back to Markdown.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/stefanzweifel/commonmark-markdown-renderer.svg?style=flat-square)](https://packagist.org/packages/wnx/commonmark-markdown-renderer)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/wnx/commonmark-markdown-renderer.svg?style=flat-square)](https://packagist.org/packages/wnx/commonmark-markdown-renderer)
 [![Tests](https://github.com/stefanzweifel/commonmark-markdown-renderer/actions/workflows/run-tests.yml/badge.svg)](https://github.com/stefanzweifel/commonmark-markdown-renderer/actions/workflows/run-tests.yml)
 [![Check & fix styling](https://github.com/stefanzweifel/commonmark-markdown-renderer/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/stefanzweifel/commonmark-markdown-renderer/actions/workflows/php-cs-fixer.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/stefanzweifel/commonmark-markdown-renderer.svg?style=flat-square)](https://packagist.org/packages/wnx/commonmark-markdown-renderer)
+[![Total Downloads](https://img.shields.io/packagist/dt/wnx/commonmark-markdown-renderer.svg?style=flat-square)](https://packagist.org/packages/wnx/commonmark-markdown-renderer)
 
 Render a league/commonmark AST back to Markdown.
 
