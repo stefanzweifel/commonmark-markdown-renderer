@@ -26,6 +26,6 @@ class HeadingRenderer implements NodeRendererInterface
 
         $content = $childRenderer->renderNodes($node->children());
 
-        return "$level $content";
+        return "$level $content\n";
     }
 }
