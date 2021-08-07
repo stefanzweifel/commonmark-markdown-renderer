@@ -33,7 +33,7 @@ class MarkdownRendererTest extends TestCase
         $result = $this->renderer->renderDocument($document)->getContent();
 
         $this->assertIsString($result);
-        $this->assertEquals('# Hello World', $result);
+        $this->assertEquals("# Hello World\n", $result);
     }
 
     /** @test */
