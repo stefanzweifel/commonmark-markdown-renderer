@@ -22,6 +22,7 @@ composer require wnx/commonmark-markdown-renderer
 ```php
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Parser\MarkdownParser;
+use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
 
 $environment = new Environment($config);
