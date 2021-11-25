@@ -8,7 +8,6 @@ use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
-use League\CommonMark\Util\Xml;
 
 class CodeRenderer implements NodeRendererInterface
 {
@@ -23,7 +22,7 @@ class CodeRenderer implements NodeRendererInterface
     {
         Code::assertInstanceOf($node);
 
-        $content = Xml::escape($node->getLiteral());
+        $content = $node->getLiteral();
 
         return "`$content`";
     }
