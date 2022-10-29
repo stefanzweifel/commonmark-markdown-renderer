@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace Wnx\CommonmarkMarkdownRenderer\Renderer\Inline {
-
     use League\CommonMark\Node\Inline\Newline;
     use League\CommonMark\Node\Node;
     use League\CommonMark\Renderer\ChildNodeRendererInterface;
