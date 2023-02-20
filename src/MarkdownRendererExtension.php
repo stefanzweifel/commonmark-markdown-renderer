@@ -37,6 +37,8 @@ use League\CommonMark\Extension\CommonMark\Parser\Inline\HtmlInlineParser;
 use League\CommonMark\Extension\CommonMark\Parser\Inline\OpenBracketParser;
 use League\CommonMark\Extension\ConfigurableExtensionInterface;
 use League\CommonMark\Extension\ExtensionInterface;
+use League\CommonMark\Extension\TaskList\TaskListItemMarker;
+use League\CommonMark\Extension\TaskList\TaskListItemMarkerParser;
 use League\CommonMark\Node\Block\Document;
 use League\CommonMark\Node\Block\Paragraph;
 use League\CommonMark\Node\Inline\Newline;
@@ -59,6 +61,7 @@ use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\ImageRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\LinkRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\NewlineRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\StrongRenderer;
+use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TaskListItemMarkerRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TextRenderer;
 
 final class MarkdownRendererExtension implements ExtensionInterface, ConfigurableExtensionInterface
@@ -93,6 +96,7 @@ final class MarkdownRendererExtension implements ExtensionInterface, Configurabl
         $environment->addInlineParser(new CloseBracketParser(), 30);
         $environment->addInlineParser(new OpenBracketParser(), 20);
         $environment->addInlineParser(new BangParser(), 10);
+        $environment->addInlineParser(new TaskListItemMarkerParser(), 35);
 
 
         $environment->addRenderer(BlockQuote::class, new BlockQuoteRenderer());
@@ -114,6 +118,7 @@ final class MarkdownRendererExtension implements ExtensionInterface, Configurabl
         $environment->addRenderer(Newline::class, new NewlineRenderer());
         $environment->addRenderer(Strong::class, new StrongRenderer());
         $environment->addRenderer(Text::class, new TextRenderer());
+        $environment->addRenderer(TaskListItemMarker::class, new TaskListItemMarkerRenderer());
 
         if ($environment->getConfiguration()->get('commonmark/use_asterisk')) {
             $environment->addDelimiterProcessor(new EmphasisDelimiterProcessor('*'));
