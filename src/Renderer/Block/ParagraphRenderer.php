@@ -10,7 +10,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class ParagraphRenderer implements NodeRendererInterface
+final class ParagraphRenderer implements NodeRendererInterface
 {
     /**
      * @param Paragraph $node
@@ -19,7 +19,7 @@ class ParagraphRenderer implements NodeRendererInterface
      *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         Paragraph::assertInstanceOf($node);
 

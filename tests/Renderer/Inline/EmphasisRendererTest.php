@@ -12,7 +12,7 @@ use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\EmphasisRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class EmphasisRendererTest extends TestCase
+final class EmphasisRendererTest extends TestCase
 {
     private EmphasisRenderer $renderer;
 
@@ -23,7 +23,7 @@ class EmphasisRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_emphasis()
+    public function it_renders_emphasis(): void
     {
         $block = new Emphasis();
         $fakeRenderer = new FakeChildNodeRenderer();

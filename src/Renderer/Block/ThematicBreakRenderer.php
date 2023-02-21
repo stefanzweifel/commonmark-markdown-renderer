@@ -9,7 +9,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class ThematicBreakRenderer implements NodeRendererInterface
+final class ThematicBreakRenderer implements NodeRendererInterface
 {
     /**
      * @param ThematicBreak $node

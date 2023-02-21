@@ -12,7 +12,7 @@ use League\CommonMark\Util\RegexHelper;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
 
-class ImageRenderer implements NodeRendererInterface, ConfigurationAwareInterface
+final class ImageRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
     /** @psalm-readonly-allow-private-mutation */
     private ConfigurationInterface $config;

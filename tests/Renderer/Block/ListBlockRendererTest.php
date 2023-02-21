@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ListBlockRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class ListBlockRendererTest extends TestCase
+final class ListBlockRendererTest extends TestCase
 {
     private ListBlockRenderer $renderer;
 
@@ -20,7 +20,7 @@ class ListBlockRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_ordered_list_block()
+    public function it_renders_ordered_list_block(): void
     {
         $data = new ListData();
         $data->type = ListBlock::TYPE_ORDERED;
@@ -37,7 +37,7 @@ class ListBlockRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_unordered_list_block()
+    public function it_renders_unordered_list_block(): void
     {
         $data = new ListData();
         $data->type = ListBlock::TYPE_BULLET;

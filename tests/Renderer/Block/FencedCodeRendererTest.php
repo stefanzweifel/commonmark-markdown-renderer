@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\FencedCodeRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class FencedCodeRendererTest extends TestCase
+final class FencedCodeRendererTest extends TestCase
 {
     private FencedCodeRenderer $renderer;
 

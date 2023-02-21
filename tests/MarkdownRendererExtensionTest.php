@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
 
-class MarkdownRendererExtensionTest extends TestCase
+final class MarkdownRendererExtensionTest extends TestCase
 {
     /**
      * @dataProvider getTestData
@@ -31,7 +31,7 @@ class MarkdownRendererExtensionTest extends TestCase
     /**
      * @return iterable<array<mixed>>
      */
-    public function getTestData(): iterable
+    public function getTestData(): \Iterator
     {
         yield ['*Emphasis*', [], "*Emphasis*\n"];
         yield ['**Strong**', [], "**Strong**\n"];

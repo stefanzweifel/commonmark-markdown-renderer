@@ -12,7 +12,7 @@ use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\HtmlBlockRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class HtmlBlockRendererTest extends TestCase
+final class HtmlBlockRendererTest extends TestCase
 {
     private HtmlBlockRenderer $renderer;
 
@@ -23,7 +23,7 @@ class HtmlBlockRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_paragraph()
+    public function it_renders_paragraph(): void
     {
         $block = new HtmlBlock(HtmlBlock::TYPE_2_COMMENT);
         $block->setLiteral("<!-- This is a comment -->");

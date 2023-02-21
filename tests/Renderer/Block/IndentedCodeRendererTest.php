@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\IndentedCodeRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class IndentedCodeRendererTest extends TestCase
+final class IndentedCodeRendererTest extends TestCase
 {
     private IndentedCodeRenderer $renderer;
 
@@ -20,7 +20,7 @@ class IndentedCodeRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_indented_code_renderer()
+    public function it_renders_indented_code_renderer(): void
     {
         $document = new Document();
 

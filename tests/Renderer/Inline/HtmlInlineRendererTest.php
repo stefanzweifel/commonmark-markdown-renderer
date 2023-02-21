@@ -12,7 +12,7 @@ use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\HtmlInlineRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class HtmlInlineRendererTest extends TestCase
+final class HtmlInlineRendererTest extends TestCase
 {
     private HtmlInlineRenderer $renderer;
 
@@ -23,7 +23,7 @@ class HtmlInlineRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_inline_html()
+    public function it_renders_inline_html(): void
     {
         $block = new HtmlInline("<h1>Test</h1>");
         $fakeRenderer = new FakeChildNodeRenderer();

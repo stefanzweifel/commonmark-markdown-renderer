@@ -8,7 +8,7 @@ use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 
-class ListBlockRenderer implements \League\CommonMark\Renderer\NodeRendererInterface
+final class ListBlockRenderer implements \League\CommonMark\Renderer\NodeRendererInterface
 {
     /**
      * @param ListBlock $node
@@ -27,9 +27,7 @@ class ListBlockRenderer implements \League\CommonMark\Renderer\NodeRendererInter
         $content = explode("\n", $content);
 
         if ($listData->type === ListBlock::TYPE_BULLET) {
-            $content = array_map(function ($item) {
-                return "- {$item}";
-            }, $content);
+            $content = array_map(fn($item) => "- {$item}", $content);
         }
 
         if ($listData->type === ListBlock::TYPE_ORDERED) {

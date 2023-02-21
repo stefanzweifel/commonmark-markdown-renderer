@@ -12,7 +12,7 @@ use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\StrongRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class StrongRendererTest extends TestCase
+final class StrongRendererTest extends TestCase
 {
     private StrongRenderer $renderer;
 
@@ -23,7 +23,7 @@ class StrongRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_strong()
+    public function it_renders_strong(): void
     {
         $block = new Strong();
         $fakeRenderer = new FakeChildNodeRenderer();

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\HeadingRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class HeadingRendererTest extends TestCase
+final class HeadingRendererTest extends TestCase
 {
     private HeadingRenderer $renderer;
 
@@ -19,7 +19,7 @@ class HeadingRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_heading()
+    public function it_renders_heading(): void
     {
         $block = new Heading(1);
 

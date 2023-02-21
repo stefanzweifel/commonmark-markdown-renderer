@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
 
-class MarkdownRendererTest extends TestCase
+final class MarkdownRendererTest extends TestCase
 {
     private MarkdownParser $parser;
 
@@ -26,7 +26,7 @@ class MarkdownRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_ast_to_markdown()
+    public function it_renders_ast_to_markdown(): void
     {
         $document = $this->parser->parse("# Hello World");
 
@@ -37,7 +37,7 @@ class MarkdownRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_parses_and_renders_kitchen_sink()
+    public function it_parses_and_renders_kitchen_sink(): void
     {
         $contentKitchenSink = file_get_contents(__DIR__ . '/../stubs/kitchen-sink.md');
 

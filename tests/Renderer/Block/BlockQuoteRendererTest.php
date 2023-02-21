@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\BlockQuoteRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class BlockQuoteRendererTest extends TestCase
+final class BlockQuoteRendererTest extends TestCase
 {
     private BlockQuoteRenderer $renderer;
 
@@ -19,7 +19,7 @@ class BlockQuoteRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_block_quote()
+    public function it_renders_block_quote(): void
     {
         $block = new BlockQuote();
         $fakeRenderer = new FakeChildNodeRenderer();

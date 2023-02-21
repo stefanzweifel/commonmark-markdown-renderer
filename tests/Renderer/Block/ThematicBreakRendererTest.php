@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ThematicBreakRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class ThematicBreakRendererTest extends TestCase
+final class ThematicBreakRendererTest extends TestCase
 {
     private ThematicBreakRenderer $renderer;
 
@@ -19,7 +19,7 @@ class ThematicBreakRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_thematic_break()
+    public function it_renders_thematic_break(): void
     {
         $block = new ThematicBreak();
         $fakeRenderer = new FakeChildNodeRenderer();

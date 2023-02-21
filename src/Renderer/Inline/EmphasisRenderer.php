@@ -11,7 +11,7 @@ use League\CommonMark\Renderer\NodeRendererInterface;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
 
-class EmphasisRenderer implements NodeRendererInterface, ConfigurationAwareInterface
+final class EmphasisRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
     /** @psalm-readonly-allow-private-mutation */
     private ConfigurationInterface $config;
@@ -28,7 +28,7 @@ class EmphasisRenderer implements NodeRendererInterface, ConfigurationAwareInter
      *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         Emphasis::assertInstanceOf($node);
 

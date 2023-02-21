@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TaskListItemMarkerRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class TaskListItemMarkerRendererTest extends TestCase
+final class TaskListItemMarkerRendererTest extends TestCase
 {
     private TaskListItemMarkerRenderer $renderer;
 
@@ -19,7 +19,7 @@ class TaskListItemMarkerRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_unchecked_task_list_item()
+    public function it_renders_unchecked_task_list_item(): void
     {
         $node = new TaskListItemMarker(false);
         $fakeRenderer = new FakeChildNodeRenderer();
@@ -31,7 +31,7 @@ class TaskListItemMarkerRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_checked_task_list_item()
+    public function it_renders_checked_task_list_item(): void
     {
         $node = new TaskListItemMarker(true);
         $fakeRenderer = new FakeChildNodeRenderer();

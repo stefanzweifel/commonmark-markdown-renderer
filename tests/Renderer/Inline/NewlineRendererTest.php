@@ -12,7 +12,7 @@ use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\NewlineRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class NewlineRendererTest extends TestCase
+final class NewlineRendererTest extends TestCase
 {
     private NewlineRenderer $renderer;
 
@@ -22,7 +22,7 @@ class NewlineRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_hardbreak_new_line()
+    public function it_renders_hardbreak_new_line(): void
     {
         $inline = new Newline(Newline::HARDBREAK);
         $fakeRenderer = new FakeChildNodeRenderer();
@@ -34,7 +34,7 @@ class NewlineRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_softbreak_new_line()
+    public function it_renders_softbreak_new_line(): void
     {
         $inline = new Newline(Newline::SOFTBREAK);
         $fakeRenderer = new FakeChildNodeRenderer();

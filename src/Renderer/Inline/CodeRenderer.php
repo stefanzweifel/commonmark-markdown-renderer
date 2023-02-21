@@ -9,7 +9,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class CodeRenderer implements NodeRendererInterface
+final class CodeRenderer implements NodeRendererInterface
 {
     /**
      * @param Code $node

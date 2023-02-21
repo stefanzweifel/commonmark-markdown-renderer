@@ -9,7 +9,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class IndentedCodeRenderer implements NodeRendererInterface
+final class IndentedCodeRenderer implements NodeRendererInterface
 {
     /**
      * @param IndentedCode $node

@@ -10,7 +10,7 @@ use League\CommonMark\Node\Block\Paragraph;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 
-class ListItemRenderer implements \League\CommonMark\Renderer\NodeRendererInterface
+final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRendererInterface
 {
     /**
      * @param ListItem $node
@@ -19,16 +19,16 @@ class ListItemRenderer implements \League\CommonMark\Renderer\NodeRendererInterf
      *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         ListItem::assertInstanceOf($node);
 
         $contents = $childRenderer->renderNodes($node->children());
-        if (\substr($contents, 0, 1) === '<' && ! $this->startsTaskListItem($node)) {
+        if (str_starts_with($contents, '<') && ! $this->startsTaskListItem($node)) {
             $contents = "\n" . $contents;
         }
 
-        if (\substr($contents, -1, 1) === '>') {
+        if (str_ends_with($contents, '>')) {
             $contents .= "\n";
         }
 

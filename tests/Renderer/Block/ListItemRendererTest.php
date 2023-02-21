@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ListItemRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class ListItemRendererTest extends TestCase
+final class ListItemRendererTest extends TestCase
 {
     private ListItemRenderer $renderer;
 
@@ -20,7 +20,7 @@ class ListItemRendererTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_unordered_list()
+    public function it_renders_unordered_list(): void
     {
         $block = new ListItem(new ListData());
         $block->data->set('attributes/id', 'foo');
