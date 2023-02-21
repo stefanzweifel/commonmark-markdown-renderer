@@ -12,7 +12,7 @@ use League\CommonMark\Util\RegexHelper;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
 
-class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInterface
+final class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
     /** @psalm-readonly-allow-private-mutation */
     private ConfigurationInterface $config;
@@ -24,7 +24,7 @@ class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInterface
      *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         Link::assertInstanceOf($node);
 

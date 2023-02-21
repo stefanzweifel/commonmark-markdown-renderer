@@ -9,7 +9,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class HeadingRenderer implements NodeRendererInterface
+final class HeadingRenderer implements NodeRendererInterface
 {
     /**
      * @param Heading $node
@@ -18,7 +18,7 @@ class HeadingRenderer implements NodeRendererInterface
      *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         Heading::assertInstanceOf($node);
 

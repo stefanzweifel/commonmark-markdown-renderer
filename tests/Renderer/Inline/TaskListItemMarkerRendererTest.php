@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Inline;
 
 use League\CommonMark\Extension\TaskList\TaskListItemMarker;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TaskListItemMarkerRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class TaskListItemMarkerRendererTest extends TestCase
+final class TaskListItemMarkerRendererTest extends TestCase
 {
     private TaskListItemMarkerRenderer $renderer;
 
@@ -18,8 +19,8 @@ class TaskListItemMarkerRendererTest extends TestCase
         $this->renderer = new TaskListItemMarkerRenderer();
     }
 
-    /** @test */
-    public function it_renders_unchecked_task_list_item()
+    #[Test]
+    public function it_renders_unchecked_task_list_item(): void
     {
         $node = new TaskListItemMarker(false);
         $fakeRenderer = new FakeChildNodeRenderer();
@@ -30,8 +31,8 @@ class TaskListItemMarkerRendererTest extends TestCase
         $this->assertEquals("[ ]", $result);
     }
 
-    /** @test */
-    public function it_renders_checked_task_list_item()
+    #[Test]
+    public function it_renders_checked_task_list_item(): void
     {
         $node = new TaskListItemMarker(true);
         $fakeRenderer = new FakeChildNodeRenderer();

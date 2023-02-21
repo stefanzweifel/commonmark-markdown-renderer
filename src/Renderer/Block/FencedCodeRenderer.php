@@ -9,7 +9,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class FencedCodeRenderer implements NodeRendererInterface
+final class FencedCodeRenderer implements NodeRendererInterface
 {
     /**
      * @param FencedCode $node

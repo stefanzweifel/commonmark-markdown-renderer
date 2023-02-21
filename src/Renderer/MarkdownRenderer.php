@@ -16,16 +16,13 @@ use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\MarkdownRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRendererInterface
+/**
+ * @psalm-suppress UnusedClass
+ */
+final class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRendererInterface
 {
-    /**
-     * @var Environment|Environment
-     */
-    private $environment;
-
-    public function __construct(Environment $environment)
+    public function __construct(private readonly Environment $environment)
     {
-        $this->environment = $environment;
     }
 
     public function renderDocument(Document $document): RenderedContentInterface
@@ -41,13 +38,11 @@ class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRendererIn
     }
 
     /**
-     * @return \Stringable|string
-     *
      * @throws \RuntimeException
      */
-    private function renderNode(Node $node)
+    private function renderNode(Node $node): \Stringable|string
     {
-        $renderers = $this->environment->getRenderersForClass(\get_class($node));
+        $renderers = $this->environment->getRenderersForClass($node::class);
 
         foreach ($renderers as $renderer) {
             \assert($renderer instanceof NodeRendererInterface);
@@ -56,7 +51,7 @@ class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRendererIn
             }
         }
 
-        throw new \RuntimeException('Unable to find corresponding renderer for node type ' . \get_class($node));
+        throw new \RuntimeException('Unable to find corresponding renderer for node type ' . $node::class);
     }
 
     public function renderNodes(iterable $nodes): string

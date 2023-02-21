@@ -12,7 +12,7 @@ use League\CommonMark\Util\HtmlFilter;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
 
-class HtmlInlineRenderer implements NodeRendererInterface, ConfigurationAwareInterface
+final class HtmlInlineRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
     /** @psalm-readonly-allow-private-mutation */
     private ConfigurationInterface $config;

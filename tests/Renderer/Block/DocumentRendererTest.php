@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Node\Block\Document;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\DocumentRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class DocumentRendererTest extends TestCase
+final class DocumentRendererTest extends TestCase
 {
     private DocumentRenderer $renderer;
 
@@ -18,8 +19,8 @@ class DocumentRendererTest extends TestCase
         $this->renderer = new DocumentRenderer();
     }
 
-    /** @test */
-    public function it_renders_document()
+    #[Test]
+    public function it_renders_document(): void
     {
         $block = new Document();
         $fakeRenderer = new FakeChildNodeRenderer();

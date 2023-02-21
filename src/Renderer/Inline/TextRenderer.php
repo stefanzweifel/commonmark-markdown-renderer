@@ -9,7 +9,7 @@ use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
-class TextRenderer implements NodeRendererInterface
+final class TextRenderer implements NodeRendererInterface
 {
     /**
      * @param Text $node
@@ -18,7 +18,7 @@ class TextRenderer implements NodeRendererInterface
      *
      * @psalm-suppress MoreSpecificImplementedParamType
      */
-    public function render(Node $node, ChildNodeRendererInterface $childRenderer)
+    public function render(Node $node, ChildNodeRendererInterface $childRenderer): string
     {
         Text::assertInstanceOf($node);
 

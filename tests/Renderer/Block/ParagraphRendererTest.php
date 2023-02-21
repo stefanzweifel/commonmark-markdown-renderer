@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Node\Block\Paragraph;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ParagraphRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class ParagraphRendererTest extends TestCase
+final class ParagraphRendererTest extends TestCase
 {
     private ParagraphRenderer $renderer;
 
@@ -18,8 +19,8 @@ class ParagraphRendererTest extends TestCase
         $this->renderer = new ParagraphRenderer();
     }
 
-    /** @test */
-    public function it_renders_paragraph()
+    #[Test]
+    public function it_renders_paragraph(): void
     {
         $block = new Paragraph();
         $fakeRenderer = new FakeChildNodeRenderer();

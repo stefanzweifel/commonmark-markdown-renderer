@@ -64,6 +64,9 @@ use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\StrongRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TaskListItemMarkerRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TextRenderer;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class MarkdownRendererExtension implements ExtensionInterface, ConfigurableExtensionInterface
 {
     public function configureSchema(ConfigurationBuilderInterface $builder): void

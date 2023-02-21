@@ -12,7 +12,7 @@ use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\LinkRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class LinkRendererTest extends TestCase
+final class LinkRendererTest extends TestCase
 {
     private LinkRenderer $renderer;
 
@@ -22,8 +22,8 @@ class LinkRendererTest extends TestCase
         $this->renderer->setConfiguration($this->createConfiguration());
     }
 
-    /** @test */
-    public function it_renders_link()
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function it_renders_link(): void
     {
         $inline = new Link('http://example.com/foo.html', '::label::', '::title::');
         $inline->data->set('attributes', ['id' => '::id::', 'title' => '::title2::', 'href' => '::href2::']);

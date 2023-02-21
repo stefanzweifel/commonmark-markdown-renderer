@@ -7,12 +7,13 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Inline;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Node\Inline\Newline;
 use League\Config\ConfigurationInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\NewlineRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
 
-class NewlineRendererTest extends TestCase
+final class NewlineRendererTest extends TestCase
 {
     private NewlineRenderer $renderer;
 
@@ -21,8 +22,8 @@ class NewlineRendererTest extends TestCase
         $this->renderer = new NewlineRenderer();
     }
 
-    /** @test */
-    public function it_renders_hardbreak_new_line()
+    #[Test]
+    public function it_renders_hardbreak_new_line(): void
     {
         $inline = new Newline(Newline::HARDBREAK);
         $fakeRenderer = new FakeChildNodeRenderer();
@@ -33,8 +34,8 @@ class NewlineRendererTest extends TestCase
         $this->assertEquals("\n", $result);
     }
 
-    /** @test */
-    public function it_renders_softbreak_new_line()
+    #[Test]
+    public function it_renders_softbreak_new_line(): void
     {
         $inline = new Newline(Newline::SOFTBREAK);
         $fakeRenderer = new FakeChildNodeRenderer();

@@ -11,7 +11,7 @@ use League\CommonMark\Renderer\NodeRendererInterface;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
 
-class StrongRenderer implements NodeRendererInterface, ConfigurationAwareInterface
+final class StrongRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
     /** @psalm-readonly-allow-private-mutation */
     private ConfigurationInterface $config;
