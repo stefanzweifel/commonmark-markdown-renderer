@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Inline;
 
 use League\CommonMark\Extension\TaskList\TaskListItemMarker;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TaskListItemMarkerRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -18,7 +19,7 @@ final class TaskListItemMarkerRendererTest extends TestCase
         $this->renderer = new TaskListItemMarkerRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_unchecked_task_list_item(): void
     {
         $node = new TaskListItemMarker(false);
@@ -30,7 +31,7 @@ final class TaskListItemMarkerRendererTest extends TestCase
         $this->assertEquals("[ ]", $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_checked_task_list_item(): void
     {
         $node = new TaskListItemMarker(true);

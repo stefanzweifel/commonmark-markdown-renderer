@@ -16,7 +16,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         SetList::TYPE_DECLARATION,
         SetList::PRIVATIZATION,
-        LevelSetList::UP_TO_PHP_80,
-        PHPUnitSetList::PHPUNIT_91,
+        LevelSetList::UP_TO_PHP_81,
+        PHPUnitSetList::PHPUNIT_100,
     ]);
 };

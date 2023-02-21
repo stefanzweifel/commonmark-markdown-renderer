@@ -6,6 +6,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\IndentedCode;
 use League\CommonMark\Node\Block\Document;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\IndentedCodeRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -19,7 +20,7 @@ final class IndentedCodeRendererTest extends TestCase
         $this->renderer = new IndentedCodeRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_indented_code_renderer(): void
     {
         $document = new Document();

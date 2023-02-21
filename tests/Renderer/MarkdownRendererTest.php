@@ -6,6 +6,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer;
 
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Parser\MarkdownParser;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
@@ -25,7 +26,7 @@ final class MarkdownRendererTest extends TestCase
         $this->renderer = new MarkdownRenderer($environment);
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_ast_to_markdown(): void
     {
         $document = $this->parser->parse("# Hello World");
@@ -36,7 +37,7 @@ final class MarkdownRendererTest extends TestCase
         $this->assertEquals("# Hello World\n", $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_parses_and_renders_kitchen_sink(): void
     {
         $contentKitchenSink = file_get_contents(__DIR__ . '/../stubs/kitchen-sink.md');

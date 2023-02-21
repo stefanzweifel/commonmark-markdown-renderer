@@ -22,7 +22,7 @@ final class LinkRendererTest extends TestCase
         $this->renderer->setConfiguration($this->createConfiguration());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_renders_link(): void
     {
         $inline = new Link('http://example.com/foo.html', '::label::', '::title::');

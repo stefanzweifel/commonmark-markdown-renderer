@@ -6,6 +6,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Node\Block\Document;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\FencedCodeRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -19,7 +20,7 @@ final class FencedCodeRendererTest extends TestCase
         $this->renderer = new FencedCodeRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_fenced_code(): void
     {
         $document = new Document();

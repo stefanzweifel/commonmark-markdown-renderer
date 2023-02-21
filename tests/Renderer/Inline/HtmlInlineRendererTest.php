@@ -7,6 +7,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Inline;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\Node\Inline\HtmlInline;
 use League\Config\ConfigurationInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\HtmlInlineRenderer;
@@ -22,7 +23,7 @@ final class HtmlInlineRendererTest extends TestCase
         $this->renderer->setConfiguration($this->createConfiguration());
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_inline_html(): void
     {
         $block = new HtmlInline("<h1>Test</h1>");

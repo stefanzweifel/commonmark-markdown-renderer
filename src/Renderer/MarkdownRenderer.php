@@ -21,7 +21,7 @@ use League\CommonMark\Renderer\NodeRendererInterface;
  */
 final class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRendererInterface
 {
-    public function __construct(private Environment $environment)
+    public function __construct(private readonly Environment $environment)
     {
     }
 

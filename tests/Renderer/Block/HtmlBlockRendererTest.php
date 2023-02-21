@@ -7,6 +7,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\Node\Block\HtmlBlock;
 use League\Config\ConfigurationInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\HtmlBlockRenderer;
@@ -22,7 +23,7 @@ final class HtmlBlockRendererTest extends TestCase
         $this->renderer->setConfiguration($this->createConfiguration());
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_paragraph(): void
     {
         $block = new HtmlBlock(HtmlBlock::TYPE_2_COMMENT);

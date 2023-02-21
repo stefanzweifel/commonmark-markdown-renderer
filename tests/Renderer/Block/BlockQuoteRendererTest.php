@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\BlockQuote;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\BlockQuoteRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -18,7 +19,7 @@ final class BlockQuoteRendererTest extends TestCase
         $this->renderer = new BlockQuoteRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_block_quote(): void
     {
         $block = new BlockQuote();

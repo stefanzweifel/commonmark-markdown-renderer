@@ -6,6 +6,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests;
 
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Parser\MarkdownParser;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
@@ -13,10 +14,9 @@ use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
 final class MarkdownRendererExtensionTest extends TestCase
 {
     /**
-     * @dataProvider getTestData
-     *
      * @param array<string, mixed> $config
      */
+    #[DataProvider('getTestData')]
     public function test_markdown_renderer_extension_works(string $markdown, array $config, string $expected): void
     {
         $environment = new Environment($config);
@@ -31,7 +31,7 @@ final class MarkdownRendererExtensionTest extends TestCase
     /**
      * @return iterable<array<mixed>>
      */
-    public function getTestData(): \Iterator
+    public static function getTestData(): \Iterator
     {
         yield ['*Emphasis*', [], "*Emphasis*\n"];
         yield ['**Strong**', [], "**Strong**\n"];

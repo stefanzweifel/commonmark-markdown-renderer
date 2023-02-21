@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\ThematicBreak;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ThematicBreakRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -18,7 +19,7 @@ final class ThematicBreakRendererTest extends TestCase
         $this->renderer = new ThematicBreakRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_thematic_break(): void
     {
         $block = new ThematicBreak();

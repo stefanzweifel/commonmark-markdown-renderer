@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Inline;
 
 use League\CommonMark\Node\Inline\Text;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Inline\TextRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -18,7 +19,7 @@ final class TextRendererTest extends TestCase
         $this->renderer = new TextRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_paragraph(): void
     {
         $block = new Text('Foo Bar');

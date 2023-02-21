@@ -6,6 +6,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
 use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
 use League\CommonMark\Extension\CommonMark\Node\Block\ListData;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ListBlockRenderer;
 use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
@@ -19,7 +20,7 @@ final class ListBlockRendererTest extends TestCase
         $this->renderer = new ListBlockRenderer();
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_ordered_list_block(): void
     {
         $data = new ListData();
@@ -36,7 +37,7 @@ final class ListBlockRendererTest extends TestCase
         $this->assertEquals("1. ::children::\n", $result);
     }
 
-    /** @test */
+    #[Test]
     public function it_renders_unordered_list_block(): void
     {
         $data = new ListData();
