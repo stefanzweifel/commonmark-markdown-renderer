@@ -27,7 +27,7 @@ final class ListBlockRenderer implements \League\CommonMark\Renderer\NodeRendere
         $content = explode("\n", $content);
 
         if ($listData->type === ListBlock::TYPE_BULLET) {
-            $content = array_map(fn($item) => "- {$item}", $content);
+            $content = array_map(fn ($item) => "- {$item}", $content);
         }
 
         if ($listData->type === ListBlock::TYPE_ORDERED) {
