@@ -16,6 +16,9 @@ use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\MarkdownRendererInterface;
 use League\CommonMark\Renderer\NodeRendererInterface;
 
+/**
+ * @psalm-suppress UnusedClass
+ */
 final class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRendererInterface
 {
     public function __construct(private Environment $environment)
