@@ -24,6 +24,13 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
         ListItem::assertInstanceOf($node);
 
         $contents = $childRenderer->renderNodes($node->children());
+
+        /**
+        if (str_contains($contents, "\n")) {
+            $contents = str_replace("\n", " ", $contents);
+        }
+        */
+
         if (str_starts_with($contents, '<') && ! $this->startsTaskListItem($node)) {
             $contents = "\n" . $contents;
         }
