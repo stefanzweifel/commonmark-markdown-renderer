@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] Task 1
 - [x] Task 2
 
+## Curiosities
+
+- This is a list item which is followed by an indented content on the next line
+  which is part of the same list item
+
 ## [Unreleased](https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD)
 
 ## [1.0.0](https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...v1.0.0) - 2017-06-20
