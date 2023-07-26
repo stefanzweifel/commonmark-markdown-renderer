@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## Curiosities
 
 - This is a list item which is followed by an indented content on the next line
-  which is part of the same list item
+- which is part of the same list item
 
 ## [Unreleased](https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD)
 

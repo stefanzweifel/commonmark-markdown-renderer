@@ -41,11 +41,12 @@ final class MarkdownRendererTest extends TestCase
     public function it_parses_and_renders_kitchen_sink(): void
     {
         $contentKitchenSink = file_get_contents(__DIR__ . '/../stubs/kitchen-sink.md');
+        $contentKitchenSinkExpected = file_get_contents(__DIR__ . '/../stubs/kitchen-sink-expected.md');
 
         $document = $this->parser->parse($contentKitchenSink);
 
         $result = $this->renderer->renderDocument($document)->getContent();
 
-        $this->assertEquals($contentKitchenSink, $result);
+        $this->assertEquals($contentKitchenSinkExpected, $result);
     }
 }
