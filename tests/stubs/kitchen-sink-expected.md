@@ -10,6 +10,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - This is a list item which contains multiple paragraphs   
   This is the second paragraph.   
   This is the third paragraph.
+- This is a list item with multiple paragraphs, but without trailing whitespace in the original document at the end   
+  This is the second paragraph.   
+  This is the third paragraph.
 
 ## Task List
 
