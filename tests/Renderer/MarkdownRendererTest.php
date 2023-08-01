@@ -59,8 +59,9 @@ final class MarkdownRendererTest extends TestCase
         $document = $this->parser->parse($contentKitchenSink);
 
         $result = $this->renderer->renderDocument($document)->getContent();
-        // $this->assertEquals($contentKitchenSinkExpected, $result);
+        $this->assertEquals($contentKitchenSinkExpected, $result);
 
+        // Take the result and parse it again
         $document = $this->parser->parse($result);
         $result = $this->renderer->renderDocument($document)->getContent();
         $this->assertEquals($contentKitchenSinkExpected, $result);
