@@ -32,11 +32,13 @@ final class FencedCodeRenderer implements NodeRendererInterface
         }
 
         $content = $node->getLiteral();
+        $delimiter = str_repeat($node->getChar(), $node->getLength());
+        $offset = str_repeat(' ', $node->getOffset());
 
         return <<<TXT
-        ```{$language}
-        {$content}
-        ```
+        {$offset}{$delimiter}{$language}
+        {$offset}{$content}
+        {$offset}{$delimiter}
         TXT;
     }
 }
