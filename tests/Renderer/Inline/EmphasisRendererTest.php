@@ -24,7 +24,7 @@ final class EmphasisRendererTest extends TestCase
     }
 
     #[Test]
-    public function it_renders_emphasis(): void
+    public function it_renders_emphasis_using_asterisk(): void
     {
         $block = new Emphasis();
         $fakeRenderer = new FakeChildNodeRenderer();
@@ -34,6 +34,45 @@ final class EmphasisRendererTest extends TestCase
 
         $this->assertIsString($result);
         $this->assertEquals('*::children::*', $result);
+    }
+
+    #[Test]
+    public function it_renders_emphasis_using_underscore(): void
+    {
+        $block = new Emphasis('_');
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $this->renderer->setConfiguration($this->createConfiguration([
+            'commonmark' => [
+                'use_asterisk' => false,
+            ],
+        ]));
+
+        $result = $this->renderer->render($block, $fakeRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals('_::children::_', $result);
+    }
+
+    #[Test]
+    public function it_renders_emphasis_with_whatever_delimiter_used(): void
+    {
+        $block = new Emphasis('$');
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $this->renderer->setConfiguration($this->createConfiguration([
+            'commonmark' => [
+                'use_asterisk' => false,
+                'use_underscore' => false,
+            ],
+        ]));
+
+        $result = $this->renderer->render($block, $fakeRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals('$::children::$', $result);
     }
 
     /**
