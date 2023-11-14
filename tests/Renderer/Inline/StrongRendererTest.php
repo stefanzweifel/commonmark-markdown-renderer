@@ -24,19 +24,6 @@ final class StrongRendererTest extends TestCase
     }
 
     #[Test]
-    public function it_renders_strong(): void
-    {
-        $block = new Strong();
-        $fakeRenderer = new FakeChildNodeRenderer();
-        $fakeRenderer->pretendChildrenExist();
-
-        $result = $this->renderer->render($block, $fakeRenderer);
-
-        $this->assertIsString($result);
-        $this->assertEquals('**::children::**', $result);
-    }
-
-    #[Test]
     public function it_renders_strong_with_asterisks(): void
     {
         $block = new Strong();
@@ -71,7 +58,7 @@ final class StrongRendererTest extends TestCase
     #[Test]
     public function it_renders_strong_using_whatever_delimiter_used_in_the_original(): void
     {
-        $block = new Strong('__');
+        $block = new Strong('$$');
         $fakeRenderer = new FakeChildNodeRenderer();
         $fakeRenderer->pretendChildrenExist();
 
@@ -85,7 +72,7 @@ final class StrongRendererTest extends TestCase
         $result = $this->renderer->render($block, $fakeRenderer);
 
         $this->assertIsString($result);
-        $this->assertEquals('__::children::__', $result);
+        $this->assertEquals('$$::children::$$', $result);
     }
 
     /**
