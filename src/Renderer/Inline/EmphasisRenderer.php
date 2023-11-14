@@ -38,6 +38,13 @@ final class EmphasisRenderer implements NodeRendererInterface, ConfigurationAwar
             return "*{$content}*";
         }
 
-        return "_{$content}_";
+        if ($this->config->get('commonmark/use_underscore')) {
+            return "_{$content}_";
+        }
+
+        $openingDelimiter = $node->getOpeningDelimiter();
+        $closingDelimiter = $node->getClosingDelimiter();
+
+        return "$openingDelimiter{$content}$closingDelimiter";
     }
 }
