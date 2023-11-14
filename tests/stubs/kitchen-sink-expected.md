@@ -25,3 +25,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 *This Text is Italic*
 
 `\Class->getFoo()`
+
+- List Item A with `inline code`
+- List Item B
