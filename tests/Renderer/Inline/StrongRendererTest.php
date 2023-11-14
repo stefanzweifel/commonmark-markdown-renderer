@@ -36,6 +36,58 @@ final class StrongRendererTest extends TestCase
         $this->assertEquals('**::children::**', $result);
     }
 
+    #[Test]
+    public function it_renders_strong_with_asterisks(): void
+    {
+        $block = new Strong();
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $result = $this->renderer->render($block, $fakeRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals('**::children::**', $result);
+    }
+
+    #[Test]
+    public function it_renders_strong_using_underscores_if_use_asterik_is_disabled(): void
+    {
+        $block = new Strong('__');
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $this->renderer->setConfiguration($this->createConfiguration([
+            'commonmark' => [
+                'use_asterisk' => false,
+            ],
+        ]));
+
+        $result = $this->renderer->render($block, $fakeRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals('__::children::__', $result);
+    }
+
+    #[Test]
+    public function it_renders_strong_using_whatever_delimiter_used_in_the_original(): void
+    {
+        $block = new Strong('__');
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $this->renderer->setConfiguration($this->createConfiguration([
+            'commonmark' => [
+                'use_asterisk' => false,
+                'use_underscore' => false,
+            ],
+        ]));
+
+        $result = $this->renderer->render($block, $fakeRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals('__::children::__', $result);
+    }
+
     /**
      * @param array<string, mixed> $values
      */

@@ -38,6 +38,13 @@ final class StrongRenderer implements NodeRendererInterface, ConfigurationAwareI
             return "**{$content}**";
         }
 
-        return "__{$content}__";
+        if ($this->config->get('commonmark/use_underscore')) {
+            return "__{$content}__";
+        }
+
+        $openingDelimiter = $node->getOpeningDelimiter();
+        $closingDelimiter = $node->getClosingDelimiter();
+
+        return "$openingDelimiter{$content}$closingDelimiter";
     }
 }
