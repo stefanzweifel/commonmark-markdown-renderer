@@ -28,6 +28,8 @@ final class HtmlBlockRenderer implements NodeRendererInterface, ConfigurationAwa
     {
         HtmlBlock::assertInstanceOf($node);
 
+        // We ignore $node->getType() here, as we want to render all HTML blocks the same way.
+
         $htmlInput = $this->config->get('html_input');
 
         return HtmlFilter::filter($node->getLiteral(), $htmlInput);

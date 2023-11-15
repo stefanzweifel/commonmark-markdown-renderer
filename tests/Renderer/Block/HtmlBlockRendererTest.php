@@ -37,6 +37,28 @@ final class HtmlBlockRendererTest extends TestCase
         $this->assertEquals('<!-- This is a comment -->', $result);
     }
 
+    #[Test]
+    public function it_renders_cdata_html(): void
+    {
+        $block = new HtmlBlock(HtmlBlock::TYPE_5_CDATA);
+        $block->setLiteral(<<<HTML
+        <![CDATA[
+            <h1>Hello World</h1>
+        ]]>
+        HTML);
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $result = $this->renderer->render($block, $fakeRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals(<<<HTML
+        <![CDATA[
+            <h1>Hello World</h1>
+        ]]>
+        HTML, $result);
+    }
+
     /**
      * @param array<string, mixed> $values
      */
