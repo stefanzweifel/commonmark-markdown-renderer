@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Wnx\CommonmarkMarkdownRenderer\Renderer\Block;
 
+use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
+use League\CommonMark\Extension\CommonMark\Node\Block\ListData;
 use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
 use League\CommonMark\Extension\TaskList\TaskListItemMarker;
 use League\CommonMark\Node\Block\Paragraph;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
+use LogicException;
 
 final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRendererInterface
 {
-    public const INLINE_LINE_BREAK = '_COMMONMARK_MARKDOWN_RENDERER_LINE_BREAK_';
-
     /**
      * @param ListItem $node
      *
@@ -25,15 +26,11 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
     {
         ListItem::assertInstanceOf($node);
 
+        $listData = $node->getListData();
+
         $contents = $childRenderer->renderNodes($node->children());
 
-        // If the ListItem contains a line break, replace the line break with a custom string.
-        // The custom line break string is being replaced with a _native_ line break again, when
-        // being rendered in a ListBlock.
-        // This workaround is required to support multi-line list items.
-        if (str_contains($contents, "\n")) {
-            $contents = str_replace("\n", self::INLINE_LINE_BREAK, $contents);
-        }
+        $contents = $this->addPadding($listData->padding, $contents);
 
         if (str_starts_with($contents, '<') && ! $this->startsTaskListItem($node)) {
             $contents = "\n" . $contents;
@@ -43,7 +40,26 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
             $contents .= "\n";
         }
 
-        return "{$contents}";
+        $contents = $this->addBulletChar($listData, $contents);
+
+        return $contents;
+    }
+
+    private function addPadding(int $paddingLevel, string $content): string
+    {
+        $padding = str_repeat(' ', $paddingLevel);
+        $lines = [];
+        $isFirstLine = true;
+        foreach (explode("\n", $content) as $line) {
+            // We don't need to indent the first line.
+            if ($isFirstLine) {
+                $isFirstLine = false;
+            } else {
+                $line = "{$padding}{$line}";
+            }
+            $lines[] = $line;
+        }
+        return implode("\n", $lines);
     }
 
     private function startsTaskListItem(ListItem $block): bool
@@ -51,5 +67,27 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
         $firstChild = $block->firstChild();
 
         return $firstChild instanceof Paragraph && $firstChild->firstChild() instanceof TaskListItemMarker;
+    }
+
+    private function addBulletChar(ListData $listData, string $content): string
+    {
+        switch ($listData->type) {
+            case ListBlock::TYPE_BULLET:
+                return "{$listData->bulletChar} {$content}";
+            case ListBlock::TYPE_ORDERED:
+                switch ($listData->delimiter) {
+                    case ListBlock::DELIM_PAREN:
+                        $delimiter = ')';
+                        break;
+                    case ListBlock::DELIM_PERIOD:
+                        $delimiter = '.';
+                        break;
+                    default:
+                        throw new LogicException('Unexpected list delimiter: ' . $listData->delimiter);
+                }
+                return "{$listData->start}{$delimiter} $content";
+            default:
+                throw new LogicException('Unexpected list type: ' . $listData->type);
+        }
     }
 }

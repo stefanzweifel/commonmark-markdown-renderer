@@ -21,39 +21,9 @@ final class ListBlockRenderer implements \League\CommonMark\Renderer\NodeRendere
     {
         ListBlock::assertInstanceOf($node);
 
-        $listData = $node->getListData();
-
         $content = $childRenderer->renderNodes($node->children());
         $content = explode("\n", $content);
 
-        $content = array_map(fn ($item) => $this->replaceInternalLineBreakCharacter($item), $content);
-
-        if ($listData->type === ListBlock::TYPE_BULLET) {
-            $content = array_map(fn ($item) => "- {$item}", $content);
-        }
-
-        if ($listData->type === ListBlock::TYPE_ORDERED) {
-            $returnArray = [];
-            foreach ($content as $key => $value) {
-                $key++;
-                $returnArray[] = "{$key}. $value";
-            }
-
-            $content = $returnArray;
-        }
-
         return implode("\n", $content) . "\n";
-    }
-
-    /**
-     * Replace custom line break character with _native_ line breaks.
-     * Whitespace is added so that other Markdown clients correctly
-     * render the list and its line breaks.
-     * @param string $content
-     * @return string
-     */
-    private function replaceInternalLineBreakCharacter(string $content): string
-    {
-        return str_replace(ListItemRenderer::INLINE_LINE_BREAK, "   \n  ", $content);
     }
 }
