@@ -22,10 +22,11 @@ final class IndentedCodeRenderer implements NodeRendererInterface
     {
         IndentedCode::assertInstanceOf($node);
 
-        $content = $node->getLiteral();
+        $content = [];
+        foreach (explode("\n", $node->getLiteral()) as $line) {
+            $content[] = "    {$line}";
+        }
 
-        return <<<TXT
-        ```{$content}```
-        TXT;
+        return implode("\n", $content);
     }
 }

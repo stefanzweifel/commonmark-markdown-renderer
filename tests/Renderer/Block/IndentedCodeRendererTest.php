@@ -35,6 +35,6 @@ final class IndentedCodeRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertEquals('```echo "hello world!";```', $result);
+        $this->assertEquals('    echo "hello world!";', $result);
     }
 }
