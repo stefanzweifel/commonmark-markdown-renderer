@@ -87,4 +87,44 @@ final class ListBlockRendererTest extends TestCase
         $this->assertIsString($result);
         $this->assertEquals("- List Item Value\n  \n", $result);
     }
+
+    #[Test]
+    public function it_renders_unordered_list_with_multiple_list_item_values_correctly(): void
+    {
+        // Build up Children
+        $data = new ListData();
+        $data->type = ListBlock::TYPE_BULLET;
+        $data->padding = 2;
+        $data->bulletChar = '-';
+
+        $listItem = new ListItem($data);
+
+        $paragraph = new Paragraph();
+        $paragraph->appendChild(new Text('List Item Value'));
+        $listItem->appendChild($paragraph);
+
+        $block = new ListBlock($data);
+        $block->appendChild($listItem);
+        $block->appendChild(clone $listItem);
+        $block->appendChild(clone $listItem);
+
+        // Build up Child Renderer
+        $environment = new Environment();
+        $environment->addExtension(new MarkdownRendererExtension());
+        $childRenderer = new MarkdownRenderer($environment);
+
+        // Render AST
+        $result = $this->renderer->render($block, $childRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals(<<<'TXT'
+        - List Item Value
+          
+        - List Item Value
+          
+        - List Item Value
+          
+
+        TXT, $result);
+    }
 }
