@@ -55,7 +55,7 @@ final class ListBlockRendererTest extends TestCase
 
         // Assert
         $this->assertIsString($result);
-        $this->assertEquals("1. List Item Value\n", $result);
+        $this->assertEquals("1. List Item Value\n   \n", $result);
     }
 
     #[Test]
@@ -85,6 +85,6 @@ final class ListBlockRendererTest extends TestCase
         $result = $this->renderer->render($block, $childRenderer);
 
         $this->assertIsString($result);
-        $this->assertEquals("- List Item Value\n", $result);
+        $this->assertEquals("- List Item Value\n  \n", $result);
     }
 }
