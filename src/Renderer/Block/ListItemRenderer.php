@@ -59,6 +59,7 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
             }
             $lines[] = $line;
         }
+
         return implode("\n", $lines);
     }
 
@@ -78,13 +79,16 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
                 switch ($listData->delimiter) {
                     case ListBlock::DELIM_PAREN:
                         $delimiter = ')';
+
                         break;
                     case ListBlock::DELIM_PERIOD:
                         $delimiter = '.';
+
                         break;
                     default:
                         throw new LogicException('Unexpected list delimiter: ' . $listData->delimiter);
                 }
+
                 return "{$listData->start}{$delimiter} $content";
             default:
                 throw new LogicException('Unexpected list type: ' . $listData->type);
