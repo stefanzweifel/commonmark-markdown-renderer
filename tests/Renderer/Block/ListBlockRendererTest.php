@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
+use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
 use League\CommonMark\Extension\CommonMark\Node\Block\ListData;
+use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
+use League\CommonMark\Node\Block\Paragraph;
+use League\CommonMark\Node\Inline\Text;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Wnx\CommonmarkMarkdownRenderer\MarkdownRendererExtension;
 use Wnx\CommonmarkMarkdownRenderer\Renderer\Block\ListBlockRenderer;
-use Wnx\CommonmarkMarkdownRenderer\Tests\Support\FakeChildNodeRenderer;
+use Wnx\CommonmarkMarkdownRenderer\Renderer\MarkdownRenderer;
 
 final class ListBlockRendererTest extends TestCase
 {
@@ -23,34 +28,103 @@ final class ListBlockRendererTest extends TestCase
     #[Test]
     public function it_renders_ordered_list_block(): void
     {
+        // Build up Children
         $data = new ListData();
         $data->type = ListBlock::TYPE_ORDERED;
-        $data->start = 0;
+        $data->start = 1;
+        $data->padding = 3;
+        $data->delimiter = 'period';
+        $data->bulletChar = '-';
+
+        $listItem = new ListItem($data);
+
+        $paragraph = new Paragraph();
+        $paragraph->appendChild(new Text('List Item Value'));
+        $listItem->appendChild($paragraph);
 
         $block = new ListBlock($data);
-        $fakeRenderer = new FakeChildNodeRenderer();
-        $fakeRenderer->pretendChildrenExist();
+        $block->appendChild($listItem);
 
-        $result = $this->renderer->render($block, $fakeRenderer);
+        // Build up Child Renderer
+        $environment = new Environment();
+        $environment->addExtension(new MarkdownRendererExtension());
+        $childRenderer = new MarkdownRenderer($environment);
 
+        // Render AST
+        $result = $this->renderer->render($block, $childRenderer);
+
+        // Assert
         $this->assertIsString($result);
-        $this->assertEquals("1. ::children::\n", $result);
+        $this->assertEquals("1. List Item Value\n   \n", $result);
     }
 
     #[Test]
     public function it_renders_unordered_list_block(): void
     {
+        // Build up Children
         $data = new ListData();
         $data->type = ListBlock::TYPE_BULLET;
-        $data->start = 0;
+        $data->padding = 2;
+        $data->bulletChar = '-';
+
+        $listItem = new ListItem($data);
+
+        $paragraph = new Paragraph();
+        $paragraph->appendChild(new Text('List Item Value'));
+        $listItem->appendChild($paragraph);
 
         $block = new ListBlock($data);
-        $fakeRenderer = new FakeChildNodeRenderer();
-        $fakeRenderer->pretendChildrenExist();
+        $block->appendChild($listItem);
 
-        $result = $this->renderer->render($block, $fakeRenderer);
+        // Build up Child Renderer
+        $environment = new Environment();
+        $environment->addExtension(new MarkdownRendererExtension());
+        $childRenderer = new MarkdownRenderer($environment);
+
+        // Render AST
+        $result = $this->renderer->render($block, $childRenderer);
 
         $this->assertIsString($result);
-        $this->assertEquals("- ::children::\n", $result);
+        $this->assertEquals("- List Item Value\n  \n", $result);
+    }
+
+    #[Test]
+    public function it_renders_unordered_list_with_multiple_list_item_values_correctly(): void
+    {
+        // Build up Children
+        $data = new ListData();
+        $data->type = ListBlock::TYPE_BULLET;
+        $data->padding = 2;
+        $data->bulletChar = '-';
+
+        $listItem = new ListItem($data);
+
+        $paragraph = new Paragraph();
+        $paragraph->appendChild(new Text('List Item Value'));
+        $listItem->appendChild($paragraph);
+
+        $block = new ListBlock($data);
+        $block->appendChild($listItem);
+        $block->appendChild(clone $listItem);
+        $block->appendChild(clone $listItem);
+
+        // Build up Child Renderer
+        $environment = new Environment();
+        $environment->addExtension(new MarkdownRendererExtension());
+        $childRenderer = new MarkdownRenderer($environment);
+
+        // Render AST
+        $result = $this->renderer->render($block, $childRenderer);
+
+        $this->assertIsString($result);
+        $this->assertEquals(<<<'TXT'
+        - List Item Value
+          
+        - List Item Value
+          
+        - List Item Value
+          
+
+        TXT, $result);
     }
 }

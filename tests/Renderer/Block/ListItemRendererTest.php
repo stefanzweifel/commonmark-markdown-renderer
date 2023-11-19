@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wnx\CommonmarkMarkdownRenderer\Tests\Renderer\Block;
 
+use League\CommonMark\Extension\CommonMark\Node\Block\ListBlock;
 use League\CommonMark\Extension\CommonMark\Node\Block\ListData;
 use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,13 +24,16 @@ final class ListItemRendererTest extends TestCase
     #[Test]
     public function it_renders_unordered_list(): void
     {
-        $block = new ListItem(new ListData());
+        $data = new ListData();
+        $data->type = ListBlock::TYPE_BULLET;
+
+        $block = new ListItem($data);
         $block->data->set('attributes/id', 'foo');
         $fakeRenderer = new FakeChildNodeRenderer();
         $fakeRenderer->pretendChildrenExist();
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertEquals('::children::', $result);
+        $this->assertEquals(' ::children::', $result);
     }
 }
