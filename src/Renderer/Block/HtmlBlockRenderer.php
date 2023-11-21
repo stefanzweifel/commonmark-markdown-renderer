@@ -32,7 +32,7 @@ final class HtmlBlockRenderer implements NodeRendererInterface, ConfigurationAwa
 
         $htmlInput = $this->config->get('html_input');
 
-        return HtmlFilter::filter($node->getLiteral(), $htmlInput);
+        return HtmlFilter::filter($node->getLiteral() . "\n", $htmlInput);
     }
 
     public function setConfiguration(ConfigurationInterface $configuration): void
