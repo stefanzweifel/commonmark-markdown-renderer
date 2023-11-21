@@ -51,6 +51,20 @@ final class MarkdownRendererTest extends TestCase
     }
 
     #[Test]
+    public function it_parses_and_renders_commonmark_sample_file(): void
+    {
+        $sample = file_get_contents(__DIR__ . '/../stubs/sample.md');
+
+        $document = $this->parser->parse($sample);
+
+        $result = $this->renderer->renderDocument($document)->getContent();
+
+        // file_put_contents(__DIR__ . '/../stubs/sample-result.md', $result);
+
+        // $this->assertEquals($sample, $result);
+    }
+
+    #[Test]
     public function it_parses_kitchen_sink_and_parsing_the_result_again_returns_the_same_result(): void
     {
         $contentKitchenSink = file_get_contents(__DIR__ . '/../stubs/kitchen-sink.md');
