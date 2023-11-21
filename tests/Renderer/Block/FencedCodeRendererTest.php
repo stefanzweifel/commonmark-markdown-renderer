@@ -41,7 +41,7 @@ final class FencedCodeRendererTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function provide_fenced_code(): array
+    public static function provide_fenced_code(): array
     {
         return [
             'tilde as char' => [
