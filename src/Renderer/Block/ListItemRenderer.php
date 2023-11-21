@@ -74,7 +74,8 @@ final class ListItemRenderer implements \League\CommonMark\Renderer\NodeRenderer
     {
         switch ($listData->type) {
             case ListBlock::TYPE_BULLET:
-                return "{$listData->bulletChar} {$content}";
+                $padding = str_repeat(' ', $listData->padding - 1);
+                return "{$listData->bulletChar}{$padding}{$content}";
             case ListBlock::TYPE_ORDERED:
                 switch ($listData->delimiter) {
                     case ListBlock::DELIM_PAREN:
