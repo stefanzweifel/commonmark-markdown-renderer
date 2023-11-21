@@ -24,8 +24,9 @@ final class IndentedCodeRenderer implements NodeRendererInterface
 
         $content = [];
         foreach (explode("\n", $node->getLiteral()) as $line) {
-            if ($line === '')  {
-                $content[]  = null;
+            if ($line === '') {
+                $content[] = null;
+
                 continue;
             }
 
