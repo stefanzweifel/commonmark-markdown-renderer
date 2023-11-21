@@ -34,7 +34,7 @@ final class HtmlBlockRendererTest extends TestCase
         $result = $this->renderer->render($block, $fakeRenderer);
 
         $this->assertIsString($result);
-        $this->assertEquals('<!-- This is a comment -->', $result);
+        $this->assertEquals("<!-- This is a comment -->\n", $result);
     }
 
     #[Test]
@@ -56,6 +56,7 @@ final class HtmlBlockRendererTest extends TestCase
         <![CDATA[
             <h1>Hello World</h1>
         ]]>
+
         HTML, $result);
     }
 
