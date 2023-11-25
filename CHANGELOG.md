@@ -5,9 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.4.0...HEAD)
+## [Unreleased](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.4.1...HEAD)
 
 <!-- New Release notes will be placed here automatically -->
+## [v1.4.1](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.4.0...v1.4.1) - 2023-11-25
+
+### Fixed
+
+- Fix list renderer to respect original content ([#14](https://github.com/stefanzweifel/commonmark-markdown-renderer/pull/14))
+- Render fenced block how it wants to be rendered ([#9](https://github.com/stefanzweifel/commonmark-markdown-renderer/pull/9))
+- Fix rendering of indented code block ([#15](https://github.com/stefanzweifel/commonmark-markdown-renderer/pull/15))
+- Update Strong and Emphasis Renderers to use settings available in AST Node ([#11](https://github.com/stefanzweifel/commonmark-markdown-renderer/pull/11))
+
 ## [v1.4.0](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.3.1...v1.4.0) - 2023-10-16
 
 ### Added
