@@ -75,11 +75,13 @@ final class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRend
 
     public function getBlockSeparator(): string
     {
+        /** @phpstan-var string */
         return $this->environment->getConfiguration()->get('renderer/block_separator');
     }
 
     public function getInnerSeparator(): string
     {
+        /** @phpstan-var string */
         return $this->environment->getConfiguration()->get('renderer/inner_separator');
     }
 }

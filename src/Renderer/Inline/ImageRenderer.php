@@ -28,6 +28,7 @@ final class ImageRenderer implements NodeRendererInterface, ConfigurationAwareIn
     {
         Image::assertInstanceOf($node);
 
+        /** @var array<string, string> $attrs */
         $attrs = $node->data->get('attributes');
 
         $forbidUnsafeLinks = ! $this->config->get('allow_unsafe_links');

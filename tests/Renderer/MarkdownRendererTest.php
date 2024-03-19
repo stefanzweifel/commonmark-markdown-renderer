@@ -40,6 +40,7 @@ final class MarkdownRendererTest extends TestCase
     #[Test]
     public function it_parses_and_renders_kitchen_sink(): void
     {
+        /** @var string $contentKitchenSink */
         $contentKitchenSink = file_get_contents(__DIR__ . '/../stubs/kitchen-sink.md');
         $contentKitchenSinkExpected = file_get_contents(__DIR__ . '/../stubs/kitchen-sink-expected.md');
 
@@ -53,6 +54,7 @@ final class MarkdownRendererTest extends TestCase
     #[Test]
     public function it_parses_kitchen_sink_and_parsing_the_result_again_returns_the_same_result(): void
     {
+        /** @var string $contentKitchenSink */
         $contentKitchenSink = file_get_contents(__DIR__ . '/../stubs/kitchen-sink.md');
         $contentKitchenSinkExpected = file_get_contents(__DIR__ . '/../stubs/kitchen-sink-expected.md');
 

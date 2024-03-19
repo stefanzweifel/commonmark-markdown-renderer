@@ -29,7 +29,7 @@ final class MarkdownRendererExtensionTest extends TestCase
     }
 
     /**
-     * @return iterable<array<mixed>>
+     * @return \Iterator
      */
     public static function getTestData(): \Iterator
     {

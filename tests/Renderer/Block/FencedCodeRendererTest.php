@@ -21,6 +21,9 @@ final class FencedCodeRendererTest extends TestCase
         $this->renderer = new FencedCodeRenderer();
     }
 
+    /**
+     * @param array<int> $fencedArgs
+     */
     #[Test]
     #[DataProvider('provide_fenced_code')]
     public function it_renders_fenced_code(array $fencedArgs, string $expected): void
@@ -41,6 +44,9 @@ final class FencedCodeRendererTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    /**
+     * @return array<string, array<string, array<int, int|string>|string>>
+     */
     public function provide_fenced_code(): array
     {
         return [

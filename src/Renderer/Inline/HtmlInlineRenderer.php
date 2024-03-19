@@ -28,6 +28,7 @@ final class HtmlInlineRenderer implements NodeRendererInterface, ConfigurationAw
     {
         HtmlInline::assertInstanceOf($node);
 
+        /** @var string $htmlInput */
         $htmlInput = $this->config->get('html_input');
 
         return HtmlFilter::filter($node->getLiteral(), $htmlInput);
