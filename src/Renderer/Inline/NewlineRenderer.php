@@ -35,6 +35,7 @@ namespace Wnx\CommonmarkMarkdownRenderer\Renderer\Inline {
                 return "\n";
             }
 
+            /** @phpstan-var string */
             return $this->config->get('renderer/soft_break');
         }
     }

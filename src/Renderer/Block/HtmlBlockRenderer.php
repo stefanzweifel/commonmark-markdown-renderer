@@ -30,6 +30,7 @@ final class HtmlBlockRenderer implements NodeRendererInterface, ConfigurationAwa
 
         // We ignore $node->getType() here, as we want to render all HTML blocks the same way.
 
+        /** @var string $htmlInput */
         $htmlInput = $this->config->get('html_input');
 
         return HtmlFilter::filter($node->getLiteral(), $htmlInput);
