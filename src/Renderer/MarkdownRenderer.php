@@ -45,7 +45,6 @@ final class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRend
         $renderers = $this->environment->getRenderersForClass($node::class);
 
         foreach ($renderers as $renderer) {
-            \assert($renderer instanceof NodeRendererInterface);
             if (($result = $renderer->render($node, $this)) !== null) {
                 return $result;
             }

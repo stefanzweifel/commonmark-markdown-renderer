@@ -14,7 +14,6 @@ use League\Config\ConfigurationInterface;
 
 final class HtmlBlockRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
-    /** @psalm-readonly-allow-private-mutation */
     private ConfigurationInterface $config;
 
     /**

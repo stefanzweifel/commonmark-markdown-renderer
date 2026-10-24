@@ -28,7 +28,6 @@ final class ParagraphRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals("::children::\n", $result);
     }
 }

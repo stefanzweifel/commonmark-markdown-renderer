@@ -32,7 +32,6 @@ final class LinkRendererTest extends TestCase
 
         $result = $this->renderer->render($inline, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('[::children::](http://example.com/foo.html "::title::")', $result);
     }
 

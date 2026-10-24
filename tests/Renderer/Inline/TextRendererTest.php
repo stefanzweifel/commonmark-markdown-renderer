@@ -27,7 +27,6 @@ final class TextRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('Foo Bar', $result);
     }
 }

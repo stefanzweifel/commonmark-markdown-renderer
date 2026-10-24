@@ -30,7 +30,6 @@ final class NewlineRendererTest extends TestCase
 
         $result = $this->renderer->render($inline, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals("\n", $result);
     }
 
@@ -43,7 +42,6 @@ final class NewlineRendererTest extends TestCase
 
         $result = $this->renderer->render($inline, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals("::softbreakChar::", $result);
     }
 
