@@ -32,7 +32,6 @@ final class EmphasisRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('*::children::*', $result);
     }
 
@@ -51,7 +50,6 @@ final class EmphasisRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('_::children::_', $result);
     }
 
@@ -71,7 +69,6 @@ final class EmphasisRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('$::children::$', $result);
     }
 

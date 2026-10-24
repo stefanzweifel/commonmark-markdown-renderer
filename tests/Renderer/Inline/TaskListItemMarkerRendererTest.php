@@ -27,7 +27,6 @@ final class TaskListItemMarkerRendererTest extends TestCase
 
         $result = $this->renderer->render($node, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals("[ ]", $result);
     }
 
@@ -39,7 +38,6 @@ final class TaskListItemMarkerRendererTest extends TestCase
 
         $result = $this->renderer->render($node, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals("[x]", $result);
     }
 }

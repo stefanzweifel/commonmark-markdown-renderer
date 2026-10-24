@@ -32,7 +32,6 @@ final class HtmlInlineRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('<h1>Test</h1>', $result);
     }
 

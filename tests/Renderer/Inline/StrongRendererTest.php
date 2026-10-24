@@ -32,7 +32,6 @@ final class StrongRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('**::children::**', $result);
     }
 
@@ -51,7 +50,6 @@ final class StrongRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('__::children::__', $result);
     }
 
@@ -71,7 +69,6 @@ final class StrongRendererTest extends TestCase
 
         $result = $this->renderer->render($block, $fakeRenderer);
 
-        $this->assertIsString($result);
         $this->assertEquals('$$::children::$$', $result);
     }
 

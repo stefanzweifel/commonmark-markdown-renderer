@@ -14,7 +14,6 @@ use League\CommonMark\Output\RenderedContent;
 use League\CommonMark\Output\RenderedContentInterface;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\MarkdownRendererInterface;
-use League\CommonMark\Renderer\NodeRendererInterface;
 
 /**
  * @psalm-suppress UnusedClass
@@ -45,7 +44,6 @@ final class MarkdownRenderer implements ChildNodeRendererInterface, MarkdownRend
         $renderers = $this->environment->getRenderersForClass($node::class);
 
         foreach ($renderers as $renderer) {
-            \assert($renderer instanceof NodeRendererInterface);
             if (($result = $renderer->render($node, $this)) !== null) {
                 return $result;
             }

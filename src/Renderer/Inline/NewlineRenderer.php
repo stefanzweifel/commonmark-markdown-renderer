@@ -12,7 +12,6 @@ namespace Wnx\CommonmarkMarkdownRenderer\Renderer\Inline {
 
     final class NewlineRenderer implements NodeRendererInterface, ConfigurationAwareInterface
     {
-        /** @psalm-readonly-allow-private-mutation */
         private ConfigurationInterface $config;
 
         public function setConfiguration(ConfigurationInterface $configuration): void
