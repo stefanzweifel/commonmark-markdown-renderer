@@ -14,7 +14,6 @@ use League\CommonMark\Output\RenderedContent;
 use League\CommonMark\Output\RenderedContentInterface;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
 use League\CommonMark\Renderer\MarkdownRendererInterface;
-use League\CommonMark\Renderer\NodeRendererInterface;
 
 /**
  * @psalm-suppress UnusedClass
