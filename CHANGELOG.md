@@ -5,9 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.7.0...HEAD)
+## [Unreleased](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.7.1...HEAD)
 
 <!-- New Release notes will be placed here automatically -->
+## [v1.7.1](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.7.0...v1.7.1) - 2026-11-03
+
+### Fixed
+
+- Fix undefined href for unsafe links when allow_unsafe_links is false ([#26](https://github.com/stefanzweifel/commonmark-markdown-renderer/pull/26))
+
 ## [v1.7.0](https://github.com/stefanzweifel/commonmark-markdown-renderer/compare/v1.6.0...v1.7.0) - 2026-10-24
 
 ### Added
