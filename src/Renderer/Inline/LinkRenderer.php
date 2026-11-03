@@ -31,7 +31,9 @@ final class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInt
         $attrs = $node->data->get('attributes');
 
         $forbidUnsafeLinks = ! $this->config->get('allow_unsafe_links');
-        if (! ($forbidUnsafeLinks && RegexHelper::isLinkPotentiallyUnsafe($node->getUrl()))) {
+        if ($forbidUnsafeLinks && RegexHelper::isLinkPotentiallyUnsafe($node->getUrl())) {
+            $attrs['href'] = '';
+        } else {
             $attrs['href'] = $node->getUrl();
         }
 

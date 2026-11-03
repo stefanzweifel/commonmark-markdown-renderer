@@ -35,6 +35,20 @@ final class LinkRendererTest extends TestCase
         $this->assertEquals('[::children::](http://example.com/foo.html "::title::")', $result);
     }
 
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function it_renders_unsafe_link_with_empty_url_when_unsafe_links_are_forbidden(): void
+    {
+        $renderer = new LinkRenderer();
+        $renderer->setConfiguration($this->createConfiguration(['allow_unsafe_links' => false]));
+        $inline = new Link('javascript:void(0)', '::label::');
+        $fakeRenderer = new FakeChildNodeRenderer();
+        $fakeRenderer->pretendChildrenExist();
+
+        $result = $renderer->render($inline, $fakeRenderer);
+
+        $this->assertEquals('[::children::]()', $result);
+    }
+
     /**
      * @param array<string, mixed> $values
      */
